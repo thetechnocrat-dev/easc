@@ -3,56 +3,493 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>East America Science Company</title>
+    <title>East America Science</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            min-height: 100vh;
+            background-color: #738496;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #738496;
+            padding: 1rem 2rem;
+            z-index: 100;
+            border-bottom: 1px solid rgba(61, 43, 31, 0.1);
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .landing-section {
+            height: 100vh;
+            display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f4e9d8;
-            font-family: 'Crimson Text', serif;
-            text-align: center;
+            padding-top: 80px;
         }
 
         .container {
-            padding: 2rem;
-            max-width: 800px;
+            text-align: center;
+            max-width: 90vw;
         }
 
         h1 {
             font-family: 'Cinzel Decorative', cursive;
-            font-size: 4em;
-            color: #3d2b1f;
-            margin-bottom: 1rem;
+            font-size: 2em;
+            color: #2e4054;
+            margin: 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5em;
+            color: #2e4054;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f1c40f;
+        }
+
+        h1 a {
+            color: #2e4054;
+            text-decoration: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #2e4054;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #738496;
+            border-bottom: 1px solid rgba(61, 43, 31, 0.1);
+            padding: 1rem 0;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 1rem 2rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.3em;
+            color: #2e4054;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            background-color: rgba(46, 64, 84, 0.1);
+            color: #f1c40f;
+        }
+
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .services-image {
+            flex: 0 0 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://raw.githubusercontent.com/thetechnocrat-dev/easc/refs/heads/main/eas_services_2.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .services-text {
+            flex: 1;
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #2e4054;
+        }
+
+        .section-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2.5em;
+            color: #2e4054;
+            margin-bottom: 2rem;
+            text-align: center;
         }
 
         .logo {
-            width: 300px;
+            max-height: 80vh;
+            max-width: 90vw;
             height: auto;
-            margin: 2rem 0;
-            filter: sepia(100%) brightness(90%);
-            border: 4px solid #3d2b1f;
-            border-radius: 4px;
-            padding: 8px;
+            width: auto;
+            margin: 0;
         }
 
-        p {
-            font-size: 1.4em;
-            color: #2c1a0f;
-            line-height: 1.6;
-            margin-top: 1rem;
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: rgba(169, 183, 184, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid #2e4054;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.2em;
+            color: #2e4054;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 1em;
+            border: 2px solid #a9b7b8;
+            border-radius: 4px;
+            background-color: #a9b7b8;
+            color: #2e4054;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #f1c40f;
+            box-shadow: 0 0 5px rgba(241, 196, 15, 0.3);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #2e4054;
+            color: #a9b7b8;
+            padding: 1rem 2rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #f1c40f;
+            color: #2e4054;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2e4054;
+        }
+
+        .footer {
+            background-color: #2e4054;
+            color: #a9b7b8;
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-location {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1em;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .footer-social a {
+            color: #a9b7b8;
+            text-decoration: none;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #f1c40f;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #738496;
+            font-size: 0.9em;
+            color: #738496;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .services-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .services-image {
+                flex: none;
+                width: 280px;
+                height: 280px;
+                margin: 0 auto;
+                order: -1;
+            }
+
+            .content-section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .services-text {
+                font-size: 1.1em;
+            }
+
+            p {
+                font-size: 1.2em;
+            }
+
+            .logo {
+                max-height: 70vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2em;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .content-section {
+                padding: 2rem 1rem;
+            }
+
+            .services-text {
+                font-size: 1em;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>East America Science Company</h1>
-        <img src="https://raw.githubusercontent.com/thetechnocrat-dev/easc/refs/heads/main/easc_logo_3.png" alt="Company Logo" class="logo">
-    </div>
+    <header class="header">
+        <h1><a href="#top">East America Science</a></h1>
+        <nav class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="hamburger" onclick="toggleMobileNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#services" onclick="closeMobileNav()">Services</a>
+            <a href="#contact" onclick="closeMobileNav()">Contact</a>
+        </div>
+    </header>
+    
+    <section id="top" class="landing-section">
+        <div class="container">
+            <img src="https://raw.githubusercontent.com/thetechnocrat-dev/easc/d0eb090cb38e6e3fcdf3e907a401e98f4440eed7/eas_logo_no_bg.png" alt="Company Logo" class="logo">
+        </div>
+    </section>
+
+    <section id="services" class="content-section">
+        <h2 class="section-title">Services</h2>
+        <div class="services-content">
+            <div class="services-image"></div>
+            <div class="services-text">
+                <p>We build custom hardware and algorithms to facilitate bioelectricty, regenerative medicine, and developmental biology experiments.</p>
+                
+                <p>We conduct scientific experiments to reproduce results in the planarian flatworm model organism.</p>
+                
+                <p>Our goal is to provide scientists the tools to program bioelectrity. We believe the ability to coordinate large groups of cells will allow researchers to solve problems in tissue regeneration and age related functional decline.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section">
+        <h2 class="section-title">Contact</h2>
+        
+        <form class="contact-form" action="https://formspree.io/f/xovwjorr" method="POST">
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" placeholder="Tell us about your project or inquiry..." required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-location">
+                Research Triangle, North Carolina
+            </div>
+            <div class="footer-social">
+                <a href="#" target="_blank">Substack</a>
+                <a href="#" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 East America Science. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileNav() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        }
+
+        function closeMobileNav() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+        }
+
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(event) {
+            const header = document.querySelector('.header');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            if (!header.contains(event.target) && mobileNav.classList.contains('active')) {
+                closeMobileNav();
+            }
+        });
+    </script>
 </body>
 </html>
