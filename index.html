@@ -151,6 +151,17 @@
             margin: 0 auto;
         }
 
+	.subtle-link {
+	    color: inherit;
+	    text-decoration: underline;
+	    text-decoration-color: rgba(0, 0, 0, 0.3);
+	    text-underline-offset: 2px;
+	}
+	
+	.subtle-link:hover {
+	    text-decoration-color: rgba(0, 0, 0, 0.6);
+	}
+
         .services-content {
             display: flex;
             gap: 3rem;
@@ -445,15 +456,18 @@
             <div class="services-text">
                     <p>Current molecular and genetic approaches focus on specific interaction mechanisms or pathways. This is effective for treating many disease conditions. However, it's not ideal for approaching problems in tissue and organ engineering or limb regeneration.</p>
 
-                    <p>For example, young children can regenerate their fingertips if lost, unlike adults, even though both have the same DNA. <a href="https://www.sciencedirect.com/science/article/abs/pii/S1568163724001284">Growing evidence</a> supports the theory that aging is a disease of shape mediated by bioelectric signals.</p>
+                    <p>For example, young children can regenerate lost fingertips, but lose this ability as they age despite having the same DNA. Experiments in wound healing and regenerative model organisms have shown the predominant <a href="https://www.molbiolcell.org/doi/10.1091/mbc.E23-08-0312" class="subtle-link">role bioelectrical communication plays</a> in coordinating cells to solve large-scale tissue generation problems. Growing evidence supports the theory that even <a href="https://www.sciencedirect.com/science/article/abs/pii/S1568163724001284" class="subtle-link">aging is a loss of morphostatic information mediated by bioelectric signals</a>.</p>
             </div>
         </div>
     </section>
 
     <section id="contact" class="content-section">
         <h2 class="section-title">Contact</h2>
-
-	<p>Contact us if you're interested in our services, looking to fund early-stage biotech hardware companies, or want to learn more about bioelectricity.</p>
+        <div class="services-content">
+            <div class="services-text">
+		<p>Contact us if you're interested in our services, looking to fund early-stage biotech hardware companies, or want to learn more about bioelectricity.</p>
+	    </div>
+	</div>
 
         
         <form class="contact-form" action="https://formspree.io/f/xovwjorr" method="POST">
